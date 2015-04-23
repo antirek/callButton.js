@@ -1,25 +1,37 @@
 # callButton.js
-Mobilon WebCall callButton.js
-
 
 Скрипт для отображения кнопки "Перезвонить Вам?"
 
 
-Задача скрипта отобразить кнопку и загрузить в 
+- Задача скрипта отобразить кнопку и загрузить в 
 скрытую панельку форму заказа звонка
 
 
-По клику на кнопке отображается панелька с формой 
+- По клику на кнопке отображается панелька с формой 
 заказа звонка
 
 
-Форма заказа звонка загружается в iframe панельки.
+- Форма заказа звонка загружается в iframe панельки.
 
 
-## использование
+
+## Использование
+
+### простое
 
 `````
-<script type="text/javascript" src="http://developer.mobilon.ru/webcall/0.3.0/callButton.js"></script>
+<script type="text/javascript" src="http://developer.mobilon.ru/webcall/0.3-latest/callButton.js"></script>
+<script type="text/javascript">
+    callButton('yd8p1sk433');
+</script>
+
+`````
+
+
+### с параметрами
+
+`````
+<script type="text/javascript" src="http://developer.mobilon.ru/webcall/0.3-latest/callButton.js"></script>
 <script type="text/javascript">
     callButton('yd8p1sk433', {
         title: 'Позвоните Сергею', 
