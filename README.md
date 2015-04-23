@@ -46,3 +46,8 @@
 </script>
 
 `````
+
+
+## Баги? Критика? Вопросы? Предложения?
+
+email: serge.dmitriev@gmail.com
