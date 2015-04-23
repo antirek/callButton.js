@@ -14,6 +14,9 @@
 - Форма заказа звонка загружается в iframe панельки.
 
 
+![Перезвонить Вам?](https://raw.githubusercontent.com/antirek/callButton.js/master/images/screenshot.png)
+
+
 
 ## Использование
 
