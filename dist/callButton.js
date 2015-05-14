@@ -63,8 +63,6 @@ var callButton = function (key, settings) {
         var panel = document.createElement("div");
         panel.setAttribute("id", "webcallPanel");
 
-        
-
         var iframe = document.createElement("iframe");        
         var url = 'http://call.mobilon.ru/' + options.key + '/remote2';
 
@@ -83,11 +81,9 @@ var callButton = function (key, settings) {
 
         panel.appendChild(closeButton);
 
+
         var header = document.createElement("div");
         header.setAttribute("id", "webcallHeader");
-
-        
-
 
         var text = document.createElement("div");
         text.setAttribute("id", "webcallText");
