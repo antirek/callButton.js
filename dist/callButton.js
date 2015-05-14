@@ -42,7 +42,6 @@ var callButton = function (key, settings) {
         return browser.browser === 'Chrome' || browser.browser === 'Firefox';
     };
 
-
     var sheet = (function () {
         var style = document.createElement("style");
         style.setAttribute('type', 'text/css');
@@ -53,14 +52,14 @@ var callButton = function (key, settings) {
         return style.sheet;
     })();
 
-
-
-
     var Layout = function () {
         var component = document.createElement("div");
         component.setAttribute("id", "webcallComponent");
-        component.setAttribute("style", "top: " + options.top + " !important;");
-
+        component.setAttribute("style", [
+            'top: ' + options.top + ' !important;',
+            'background: ' + options.backgroundColor + ' !important;',
+            'color: ' + options.titleColor + ' !important;',
+            ].join(" "));
 
 
         var panel = document.createElement("div");
@@ -82,6 +81,10 @@ var callButton = function (key, settings) {
 
         var text = document.createElement("div");
         text.setAttribute("id", "webcallText");
+        text.setAttribute("style", [           
+            'color: ' + options.titleColor + ' !important;',
+            ].join(" "));
+
         //text.setAttribute("class", "animated");
         text.textContent = options.title;
         header.appendChild(text);
