@@ -39,17 +39,33 @@ var callButton = function (key, settings) {
 
     var browserTrusted = function () {
         return browser.browser === 'Chrome' || browser.browser === 'Firefox';
-    };   
+    };
+
+
+    var sheet = (function () {
+        var style = document.createElement("style");
+        style.setAttribute('type', 'text/css');
+
+        style.appendChild(document.createTextNode(cssCallButton));
+        document.head.appendChild(style);
+
+        return style.sheet;
+    })();
+
+
+
 
     var Layout = function () {
         var component = document.createElement("div");
         component.setAttribute("id", "webcallComponent");
+        component.setAttribute("style", "top: " + options.top + " !important;");
+
+
 
         var panel = document.createElement("div");
         panel.setAttribute("id", "webcallPanel");
 
-        var iframe = document.createElement("iframe");
-        //var url = 'http://localhost:3005/' + options.key + '/remote2';
+        var iframe = document.createElement("iframe");        
         var url = 'http://call.mobilon.ru/' + options.key + '/remote2';
 
         iframe.setAttribute('src', url);

@@ -1,3 +1,4 @@
+var cssCallButton = '#webcallComponent{top:150px!important;right:0;background:#0094d6!important;padding:10px;max-height:40px;color:#fff!important;text-align:center!important;-webkit-transition-duration:.3s;transition-duration:.3s!important;-webkit-border-radius:2px 0 0 2px;-moz-border-radius:2px 0 0 2px;border-radius:2px 0 0 2px!important;line-height:20px!important;box-shadow:0 0 10px rgba(0,0,0,.5)!important;white-space:nowrap!important;z-index:10000!important}#webcallComponent,#webcallPanel{position:fixed!important;-moz-transition-duration:.3s;-o-transition-duration:.3s}#webcallPanel{top:0;right:-400px;width:400px!important;height:100%!important;padding:0;border-left:18px solid #000 -webkit-transition-duration: .3s;transition-duration:.3s;box-shadow:0 0 10px rgba(0,0,0,.1)}#webcallComponent.open{right:400px}#webcallPanel.open{right:0}#webcallIcon{float:left;max-height:20px;max-width:20px;margin:0 5px 0 0}#webcallHeader{list-style-type:none;margin-left:0;padding-left:0;display:inline-block}#webcallHeader:hover{cursor:pointer}#webcallText{text-align:right;display:inline-block;padding:0;margin:0 10px 0 0;font-family:sans-serif;font-size:16px!important;color:#fff!important}.animated{-webkit-animation-duration:2s;animation-duration:2s;-webkit-animation-iteration-count:3;animation-iteration-count:3;-webkit-animation-name:flash;animation-name:flash}';
 var callButton = function (key, settings) {
     var options = {};
     var width = '400px';
@@ -39,17 +40,33 @@ var callButton = function (key, settings) {
 
     var browserTrusted = function () {
         return browser.browser === 'Chrome' || browser.browser === 'Firefox';
-    };   
+    };
+
+
+    var sheet = (function () {
+        var style = document.createElement("style");
+        style.setAttribute('type', 'text/css');
+
+        style.appendChild(document.createTextNode(cssCallButton));
+        document.head.appendChild(style);
+
+        return style.sheet;
+    })();
+
+
+
 
     var Layout = function () {
         var component = document.createElement("div");
         component.setAttribute("id", "webcallComponent");
+        component.setAttribute("style", "top: " + options.top + " !important;");
+
+
 
         var panel = document.createElement("div");
         panel.setAttribute("id", "webcallPanel");
 
-        var iframe = document.createElement("iframe");
-        //var url = 'http://localhost:3005/' + options.key + '/remote2';
+        var iframe = document.createElement("iframe");        
         var url = 'http://call.mobilon.ru/' + options.key + '/remote2';
 
         iframe.setAttribute('src', url);
@@ -194,15 +211,3 @@ var callButton = function (key, settings) {
         }
     }();
 };
-
-var css = '#webcallComponent{top:10px!important;right:0;background:#8b0000!important;padding:10px;max-height:40px;color:#fff!important;text-align:center!important;-webkit-transition-duration:.3s;transition-duration:.3s!important;-webkit-border-radius:2px 0 0 2px;-moz-border-radius:2px 0 0 2px;border-radius:2px 0 0 2px!important;line-height:20px!important;box-shadow:0 0 10px rgba(0,0,0,.5)!important;white-space:nowrap!important;z-index:10000!important}#webcallComponent,#webcallPanel{position:fixed!important;-moz-transition-duration:.3s;-o-transition-duration:.3s}#webcallPanel{top:0;right:- 400;//background:gray;width:400!important;height:100%!important;padding:0;border-left:18px solid #000 -webkit-transition-duration: .3s;transition-duration:.3s;box-shadow:0 0 10px rgba(0,0,0,.1);//opacity:.7}#webcallComponent.open{right:400}#webcallPanel.open{right:0}#webcallIcon{float:left;max-height:20px;max-width:20px;margin:0 5px 0 0}#webcallHeader{list-style-type:none;margin-left:0;padding-left:0;display:inline-block}#webcallHeader:hover{cursor:pointer}#webcallText{text-align:right;display:inline-block;padding:0;margin:0 10px 0 0;font-family:sans-serif;font-size:16px!important;color:#fff!important}.animated{-webkit-animation-duration:2s;animation-duration:2s;-webkit-animation-iteration-count:3;animation-iteration-count:3;-webkit-animation-name:flash;animation-name:flash}'
-var s = document.createElement('style');
-s.setAttribute('type', 'text/css');
-
-if (s.styleSheet) {
-    s.styleSheet.cssText = css;
-} else {
-    s.appendChild(document.createTextNode(css));
-}
-
-document.head.appendChild(s);

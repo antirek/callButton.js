@@ -1,9 +1,9 @@
 
 #webcallComponent {
     position: fixed !important;
-    top: 10px !important;
-    right: 0;
-    background:  darkred !important;
+    top: 150px !important;
+    right: 0px;
+    background:  #0094d6 !important;
     padding: 10px;
     max-height: 40px;
     color:  white  !important;
@@ -24,9 +24,8 @@
 #webcallPanel {
     position: fixed !important;
     top: 0px;
-    right: - 400 ;
-    //background: gray;
-    width:  400 !important;
+    right: -400px ;
+    width:  400px !important;
     height: 100% !important;
     padding: 0px 0 0 0;
     border-left: 18px solid #000000
@@ -34,11 +33,11 @@
     -moz-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    //opacity: 0.7;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);    
 }
 
-#webcallComponent.open {right:  400 ;}
+#webcallComponent.open {right:  400px ;}
+
 #webcallPanel.open {right: 0px;}
 
 #webcallIcon {
