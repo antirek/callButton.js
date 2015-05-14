@@ -70,8 +70,16 @@ var callButton = function (key, settings) {
         iframe.setAttribute('width', '100%');
         iframe.setAttribute('frameborder', '0');
         iframe.setAttribute('allowtransparency', 'true');
+        iframe.setAttribute('style', 'position:relative; top:0px; left:0px;');
 
         panel.appendChild(iframe);
+
+        var closeButton = document.createElement("div");
+        closeButton.setAttribute("id", "webcallCloseButton");
+        closeButton.innerHTML = "<b>закрыть</b>"
+
+        panel.appendChild(closeButton);
+
 
         var header = document.createElement("div");
         header.setAttribute("id", "webcallHeader");
@@ -128,8 +136,10 @@ var callButton = function (key, settings) {
         }
 
         component.appendChild(header);
-        component.appendChild(panel);
+        component.appendChild(panel);        
+
         document.body.appendChild(component);
+
     }();
 
     var helper = {

@@ -36,9 +36,13 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);    
 }
 
-#webcallComponent.open {right:  400px ;}
+#webcallComponent.open {
+    right:  400px ;
+}
 
-#webcallPanel.open {right: 0px;}
+#webcallPanel.open {
+    right: 0px;
+}
 
 #webcallIcon {
     float: left;
@@ -75,4 +79,15 @@
     animation-iteration-count: 3;
     -webkit-animation-name: flash;
     animation-name: flash;
+}
+
+#webcallCloseButton {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background: #26a69a !important;
+    padding: 5px;
+    z-index: 10;
+    font-family: "Roboto", sans-serif;
+    font-size: 10px;
 }
