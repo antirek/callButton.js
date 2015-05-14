@@ -57,10 +57,8 @@ var callButton = function (key, settings) {
         component.setAttribute("id", "webcallComponent");
         component.setAttribute("style", [
             'top: ' + options.top + ' !important;',
-            'background: ' + options.backgroundColor + ' !important;',
-            'color: ' + options.titleColor + ' !important;',
+            'background: ' + options.backgroundColor + ' !important;'
             ].join(" "));
-
 
         var panel = document.createElement("div");
         panel.setAttribute("id", "webcallPanel");
@@ -84,8 +82,7 @@ var callButton = function (key, settings) {
         text.setAttribute("style", [           
             'color: ' + options.titleColor + ' !important;',
             ].join(" "));
-
-        //text.setAttribute("class", "animated");
+        
         text.textContent = options.title;
         header.appendChild(text);
 
@@ -184,6 +181,7 @@ var callButton = function (key, settings) {
         });
 
     }();
+
     var addClickOnBodyAction = function () {
         document.addEventListener('click', function (e) {
             var panel = document.getElementById("webcallPanel");
@@ -199,6 +197,7 @@ var callButton = function (key, settings) {
             }
         });
     }();
+    
     var enableIntrusiveMode = function () {
         if (options.intrusiveMode) {
             setTimeout(function () {

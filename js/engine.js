@@ -56,8 +56,7 @@ var callButton = function (key, settings) {
         component.setAttribute("id", "webcallComponent");
         component.setAttribute("style", [
             'top: ' + options.top + ' !important;',
-            'background: ' + options.backgroundColor + ' !important;',
-            
+            'background: ' + options.backgroundColor + ' !important;'
             ].join(" "));
 
         var panel = document.createElement("div");
