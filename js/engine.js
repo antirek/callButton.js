@@ -14,6 +14,7 @@ var callButton = function (key, settings) {
         options.iconAnimated = settings.iconAnimated || false;
         options.intrusiveMode = settings.intrusiveMode || false;
         options.intrusiveTimeout = parseInt(settings.intrusiveTimeout + '000') || 30000;
+        options.closeButtonTitle = settings.closeButtonTitle || 'закрыть';
     }();
 
     var browser = (function () {
@@ -76,7 +77,7 @@ var callButton = function (key, settings) {
 
         var closeButton = document.createElement("div");
         closeButton.setAttribute("id", "webcallCloseButton");
-        closeButton.innerHTML = "<b>закрыть</b>"
+        closeButton.innerHTML = "<b>" + options.closeButtonTitle + "</b>"
 
         panel.appendChild(closeButton);
 
