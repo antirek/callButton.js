@@ -7,16 +7,20 @@
 
 <div id="bigBlock"></div>
 
-<script src="dist/callButton.js"></script>
+<script async src="dist/callButton.js"></script>
 
 <script>
-callButton("MY_KEY", {
-	title: 'Заголовок',
-	top: '50px',
-	backgroundColor: 'darkred',
-	titleColor: 'yellow',
-	icon: true,
-	iconAnimated: true,
-	closeButtonTitle: '>>'
-});
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    callButton("yd8p1sk433", {
+		title: 'Заголовок',
+		top: '50px',
+		backgroundColor: 'darkred',
+		titleColor: 'yellow',
+		icon: true,
+		iconAnimated: true,
+		closeButtonTitle: '>>'
+	});
+  });
+	
 </script>

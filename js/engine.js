@@ -15,6 +15,7 @@ var callButton = function (key, settings) {
         options.intrusiveMode = settings.intrusiveMode || false;
         options.intrusiveTimeout = parseInt(settings.intrusiveTimeout + '000') || 30000;
         options.closeButtonTitle = settings.closeButtonTitle || 'закрыть';
+        options.yandexMetrika = settings.yandexMetrika || null;
     }();
 
     var browser = (function () {
@@ -222,4 +223,18 @@ var callButton = function (key, settings) {
             }, options.intrusiveTimeout);
         }
     }();
+
+    var bindYandexMetrika = function () {
+        if (options.yandexMetrika) {
+            //@todo: validate yaMetrika options
+            try {
+                var counterId = options.yandexMetrika.counterId;
+                window.addEventListener('message', function (evt) {
+                    window['yaCounter' + counterId].reachGoal('CALLBUTTON', evt.data);
+                });
+            } catch (e) {
+                console.log('error', e);
+            }
+        }
+    }
 };
