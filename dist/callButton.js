@@ -65,7 +65,7 @@ var callButton = function (key, settings) {
         panel.setAttribute("id", "webcallPanel");
 
         var iframe = document.createElement("iframe");        
-        var url = 'http://call.mobilon.ru/' + options.key + '/remote2';
+        var url = '//call.mobilon.ru/' + options.key + '/remote2';
 
         iframe.setAttribute('src', url);
         iframe.setAttribute('height', '100%');
