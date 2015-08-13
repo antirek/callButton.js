@@ -22,7 +22,7 @@
 
 ### простое
 
-`````
+`````javascript
 <script type="text/javascript" src="http://developer.mobilon.ru/webcall/0.3-latest/callButton.js"></script>
 <script type="text/javascript">
     callButton('yd8p1sk433');
@@ -33,7 +33,7 @@
 
 ### с параметрами
 
-`````
+`````javascript
 <script type="text/javascript" src="http://developer.mobilon.ru/webcall/0.3-latest/callButton.js"></script>
 <script type="text/javascript">
     callButton('yd8p1sk433', {
