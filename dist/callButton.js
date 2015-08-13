@@ -1,5 +1,5 @@
 var cssCallButton = '#webcallCloseButton:hover,#webcallHeader:hover{cursor:pointer}#webcallComponent{top:150px!important;right:0;background:#0094d6!important;padding:10px;max-height:40px;color:#fff!important;text-align:center!important;transition-duration:.3s!important;-webkit-border-radius:2px 0 0 2px;-moz-border-radius:2px 0 0 2px;border-radius:2px 0 0 2px!important;line-height:20px!important;box-shadow:0 0 10px rgba(0,0,0,.5)!important;white-space:nowrap!important;z-index:10000!important}#webcallComponent,#webcallPanel{position:fixed!important;-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s}#webcallPanel{top:0;right:-400px;width:400px!important;height:100%!important;padding:0;transition-duration:.3s;box-shadow:0 0 10px rgba(0,0,0,.1)}#webcallComponent.open{right:400px}#webcallPanel.open{right:0}#webcallIcon{float:left;max-height:20px;max-width:20px;margin:0 5px 0 0}#webcallHeader{list-style-type:none;margin-left:0;padding-left:0;display:inline-block}#webcallText{text-align:right;display:inline-block;padding:0;margin:0 10px 0 0;font-family:sans-serif;font-size:16px!important;color:#fff!important}.animated{-webkit-animation-duration:2s;animation-duration:2s;-webkit-animation-iteration-count:3;animation-iteration-count:3;-webkit-animation-name:flash;animation-name:flash}#webcallCloseButton{position:absolute!important;top:10px!important;right:10px!important;background:#26a69a!important;padding:5px;z-index:10;font-family:Roboto,sans-serif;font-size:10px}';
-var callButton = function (key, settings) {
+var callButtonProto = function (key, settings) {
     var options = {};
     var width = '400px';
 
@@ -16,6 +16,7 @@ var callButton = function (key, settings) {
         options.intrusiveMode = settings.intrusiveMode || false;
         options.intrusiveTimeout = parseInt(settings.intrusiveTimeout + '000') || 30000;
         options.closeButtonTitle = settings.closeButtonTitle || 'закрыть';
+        options.yandexMetrika = settings.yandexMetrika || null;
     }();
 
     var browser = (function () {
@@ -223,4 +224,43 @@ var callButton = function (key, settings) {
             }, options.intrusiveTimeout);
         }
     }();
+
+    var bindYandexMetrika = function () {
+        if (options.yandexMetrika) {
+            //@todo: validate yaMetrika options
+            try {
+                var counterId = options.yandexMetrika.counterId || null;
+                var goal = options.yandexMetrika.goal || 'CALLBUTTON';
+                if (counterId && window['yaCounter' + counterId]) {                    
+                    window.addEventListener('message', function (evt) {
+                        console.log('message', evt);
+                        window['yaCounter' + counterId].reachGoal(goal, evt.data);
+                        console.log('goal reached');
+                    });
+                } else { 
+                    console.log('no yandex metrika settings'); 
+                }
+            } catch (e) {
+                console.log('error', e);
+            }
+        }
+    }();
+};
+
+
+var callButton = function (key, options) {
+    var go = function () {
+        callButtonProto(key, options);
+    };
+    
+    var body = document.getElementsByTagName('BODY')[0];
+    if ((body && body.readyState == 'loaded') || (body &&  body.readyState == 'complete')) {
+        go();
+    } else {            
+        if (window.addEventListener) {
+            window.addEventListener('load', go, false);
+        } else {
+            window.attachEvent('onload',go);
+        }
+    }   
 };

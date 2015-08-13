@@ -1,4 +1,4 @@
-var callButton = function (key, settings) {
+var callButtonProto = function (key, settings) {
     var options = {};
     var width = '400px';
 
@@ -228,13 +228,38 @@ var callButton = function (key, settings) {
         if (options.yandexMetrika) {
             //@todo: validate yaMetrika options
             try {
-                var counterId = options.yandexMetrika.counterId;
-                window.addEventListener('message', function (evt) {
-                    window['yaCounter' + counterId].reachGoal('CALLBUTTON', evt.data);
-                });
+                var counterId = options.yandexMetrika.counterId || null;
+                var goal = options.yandexMetrika.goal || 'CALLBUTTON';
+                if (counterId && window['yaCounter' + counterId]) {                    
+                    window.addEventListener('message', function (evt) {
+                        console.log('message', evt);
+                        window['yaCounter' + counterId].reachGoal(goal, evt.data);
+                        console.log('goal reached');
+                    });
+                } else { 
+                    console.log('no yandex metrika settings'); 
+                }
             } catch (e) {
                 console.log('error', e);
             }
         }
-    }
+    }();
+};
+
+
+var callButton = function (key, options) {
+    var go = function () {
+        callButtonProto(key, options);
+    };
+    
+    var body = document.getElementsByTagName('BODY')[0];
+    if ((body && body.readyState == 'loaded') || (body &&  body.readyState == 'complete')) {
+        go();
+    } else {            
+        if (window.addEventListener) {
+            window.addEventListener('load', go, false);
+        } else {
+            window.attachEvent('onload',go);
+        }
+    }   
 };
