@@ -178,7 +178,7 @@ var callButtonProto = function (key, settings) {
             if (element.classList)
               return element.classList.contains(className);
             else
-              return  new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
+              return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
         }
     };
 

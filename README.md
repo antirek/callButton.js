@@ -46,6 +46,10 @@
         intrusiveMode: true,    //режим принудительного показа панели заказа звонка
         intrusiveTimeout: 10    //время, через которое покажется панель, указывается в секундах
         closeButtonTitle: 'закрыть'   // текст кнопки закрыть
+        yandexMetrika: {
+            counterId: '12345678',      //код Яндекс метрики
+            goal: 'callbuttonpressed'   //код цели события
+        }
     });
 </script>
 
