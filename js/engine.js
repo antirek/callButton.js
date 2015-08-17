@@ -230,11 +230,14 @@ var callButtonProto = function (key, settings) {
             try {
                 var counterId = options.yandexMetrika.counterId || null;
                 var goal = options.yandexMetrika.goal || 'CALLBUTTON';
-                if (counterId && window['yaCounter' + counterId]) {                    
+                var callback = options.yandexMetrika.callback;
+                if (counterId && window['yaCounter' + counterId]) {
                     window.addEventListener('message', function (evt) {
-                        console.log('message', evt);
-                        window['yaCounter' + counterId].reachGoal(goal, evt.data);
-                        console.log('goal reached');
+                        if (!callback) { 
+                            window['yaCounter' + counterId].reachGoal(goal, evt.data);
+                        } else {
+                            callback(evt.data);
+                        }
                     });
                 } else { 
                     console.log('no yandex metrika settings'); 

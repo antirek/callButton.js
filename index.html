@@ -51,7 +51,10 @@
 		closeButtonTitle: '>>',
 		yandexMetrika: {
 			counterId: '31929386',
-			goal: 'CALLBUTTON'
+			goal: 'CALLBUTTON',
+            callback: function (object) {
+                console.log('callback', object);
+            }
 		}
 	}); 
 	
