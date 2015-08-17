@@ -48,7 +48,7 @@
         closeButtonTitle: 'закрыть'   // текст кнопки закрыть
         yandexMetrika: {
             counterId: '12345678',      //код Яндекс метрики
-            goal: 'callbuttonpressed'   //код цели события
+            goal: 'callbuttonpressed',  //код цели события
             callback: function (object) {   //функция при нажатии кнопки, можно отрабатывать разные цели в зависимости от object
                 console.log('callback', object);
             }
