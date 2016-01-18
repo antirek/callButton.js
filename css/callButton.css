@@ -71,7 +71,7 @@
     color: white !important;
 }
 
-.animated {
+.webcallanimated {
     -webkit-animation-duration: 2s;
     animation-duration: 2s;
     -webkit-animation-iteration-count: 3;

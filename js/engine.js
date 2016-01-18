@@ -131,7 +131,7 @@ var callButtonProto = function (key, settings) {
                     sheet.insertRule(rule, 0);
                 });
 
-                icon.setAttribute('class', 'animated');
+                icon.setAttribute('class', 'webcallanimated');
             }
 
             header.insertBefore(icon, header.firstChild);
